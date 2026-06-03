@@ -1,0 +1,79 @@
+name: Release Windows
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag to upload the Windows build to
+        required: true
+        default: v1.0.0
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-upload:
+    runs-on: windows-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build Windows release
+        run: flutter build windows --release
+
+      - name: Package Windows build
+        shell: pwsh
+        run: |
+          $tag = '${{ inputs.tag }}'
+          $version = $tag.TrimStart('v')
+          $releaseDir = 'build/windows/x64/runner/Release'
+          $packageName = "harbor-visible-kit-windows-$version"
+          $packageDir = "dist/$packageName"
+          $zipPath = "dist/$packageName.zip"
+
+          New-Item -ItemType Directory -Path $packageDir -Force | Out-Null
+          Copy-Item -Path "$releaseDir/*" -Destination $packageDir -Recurse -Force
+          Compress-Archive -Path $packageDir -DestinationPath $zipPath -CompressionLevel Optimal -Force
+
+          $hash = Get-FileHash -Path $zipPath -Algorithm SHA256
+          @(
+            "Windows release build for Harbor Visible Kit $tag."
+            ""
+            "Download:"
+            "- $packageName.zip"
+            ""
+            "SHA256:"
+            '```text'
+            $hash.Hash
+            '```'
+            ""
+            "Unzip the archive and run harbor_visible_kit.exe."
+            ""
+            "Source commit: $env:GITHUB_SHA"
+          ) -join "`n" | Set-Content -Path release-notes.md -Encoding UTF8
+
+          "ZIP_PATH=$zipPath" | Out-File -FilePath $env:GITHUB_ENV -Append
+          "SHA256=$($hash.Hash)" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+      - name: Upload artifact to GitHub Release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $tag = '${{ inputs.tag }}'
+          gh release view $tag --repo $env:GITHUB_REPOSITORY
+          if ($LASTEXITCODE -ne 0) {
+            gh release create $tag $env:ZIP_PATH --repo $env:GITHUB_REPOSITORY --title "Harbor Visible Kit $tag" --notes-file release-notes.md
+          } else {
+            gh release edit $tag --repo $env:GITHUB_REPOSITORY --notes-file release-notes.md
+            gh release upload $tag $env:ZIP_PATH --repo $env:GITHUB_REPOSITORY --clobber
+          }
