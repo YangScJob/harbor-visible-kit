@@ -1,0 +1,90 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="base" x1="166" y1="82" x2="858" y2="934" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0B66F2"/>
+      <stop offset="0.42" stop-color="#0643A6"/>
+      <stop offset="1" stop-color="#011B47"/>
+    </linearGradient>
+    <linearGradient id="rim" x1="124" y1="96" x2="904" y2="902" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#31B6FF"/>
+      <stop offset="0.55" stop-color="#0B63D5"/>
+      <stop offset="1" stop-color="#062C67"/>
+    </linearGradient>
+    <linearGradient id="dock" x1="254" y1="374" x2="776" y2="850" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.46" stop-color="#F7FBFF"/>
+      <stop offset="1" stop-color="#D7E4F5"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="476" y1="220" x2="722" y2="720" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#74FFFF"/>
+      <stop offset="0.5" stop-color="#1CDDEA"/>
+      <stop offset="1" stop-color="#078ED6"/>
+    </linearGradient>
+    <linearGradient id="cubeTop" x1="360" y1="380" x2="658" y2="548" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#27B8FF"/>
+      <stop offset="1" stop-color="#086AE6"/>
+    </linearGradient>
+    <linearGradient id="cubeLeft" x1="354" y1="486" x2="530" y2="824" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#158FFF"/>
+      <stop offset="1" stop-color="#064DD1"/>
+    </linearGradient>
+    <linearGradient id="cubeRight" x1="520" y1="498" x2="728" y2="804" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#63FFFF"/>
+      <stop offset="1" stop-color="#0794D1"/>
+    </linearGradient>
+    <filter id="appShadow" x="-14%" y="-10%" width="128%" height="130%">
+      <feDropShadow dx="0" dy="26" stdDeviation="28" flood-color="#001332" flood-opacity="0.34"/>
+    </filter>
+    <filter id="symbolShadow" x="-18%" y="-14%" width="136%" height="144%">
+      <feDropShadow dx="0" dy="14" stdDeviation="15" flood-color="#001638" flood-opacity="0.34"/>
+    </filter>
+  </defs>
+
+  <g>
+    <rect x="0" y="0" width="1024" height="1024" rx="230" fill="url(#base)"/>
+    <rect x="12" y="12" width="1000" height="1000" rx="218" fill="none" stroke="url(#rim)" stroke-width="12"/>
+    <path d="M78 276C133 115 270 40 512 40h92c172 0 300 64 372 190-92-36-203-54-334-54H350c-110 0-200 33-272 100Z" fill="#2BA8FF" opacity="0.18"/>
+    <path d="M76 610h872v110c0 126-102 228-228 228H304c-126 0-228-102-228-228V610Z" fill="#001331" opacity="0.26"/>
+  </g>
+
+  <g filter="url(#symbolShadow)">
+    <path d="M216 534h140l156-72 156 72h140v74h-94v140c0 28-15 54-40 68L540 894c-17 10-39 10-56 0L350 816c-25-14-40-40-40-68V608h-94v-74Z" fill="#061B44" opacity="0.35"/>
+    <path d="M216 504h140l156-72 156 72h140v72h-104v148c0 24-13 47-34 59L541 858c-18 10-40 10-58 0L354 783c-21-12-34-35-34-59V576H216v-72Z" fill="url(#dock)"/>
+    <path d="M332 602h72v116c0 10 5 19 14 24l94 54 94-54c9-5 14-14 14-24V602h72v130c0 31-17 59-44 75l-104 60c-20 12-44 12-64 0l-104-60c-27-16-44-44-44-75V602Z" fill="#001B48" opacity="0.14"/>
+
+    <path d="M352 390c18-92 102-158 198-149 88 8 157 80 162 167" fill="none" stroke="#061B44" stroke-width="90" stroke-linecap="round" opacity="0.28"/>
+    <path d="M360 374c24-78 101-131 188-121 84 9 148 76 153 159" fill="none" stroke="url(#dock)" stroke-width="70" stroke-linecap="round"/>
+    <path d="M710 424c52 21 87 69 91 126" fill="none" stroke="url(#cyan)" stroke-width="66" stroke-linecap="butt"/>
+
+    <circle cx="300" cy="540" r="22" fill="url(#dock)"/>
+    <circle cx="724" cy="540" r="22" fill="url(#dock)"/>
+    <path d="M316 540h78M630 540h78" stroke="url(#dock)" stroke-width="24" stroke-linecap="round"/>
+
+    <path d="M512 286l86 88h-42v126h-88V374h-42l86-88Z" fill="#051A43" opacity="0.32"/>
+    <path d="M512 268l86 88h-42v132h-88V356h-42l86-88Z" fill="url(#cyan)"/>
+    <path d="M512 268l86 88h-42v132h-44V268Z" fill="#FFFFFF" opacity="0.12"/>
+
+    <path d="M512 430l210 96-210 98-210-98 210-96Z" fill="#031841"/>
+    <path d="M302 526l210 98v198L302 700V526Z" fill="#031841"/>
+    <path d="M512 624l210-98v174L512 822V624Z" fill="#031841"/>
+
+    <path d="M512 454l174 79-174 81-174-81 174-79Z" fill="url(#cubeTop)"/>
+    <path d="M338 533l174 81v172L338 685V533Z" fill="url(#cubeLeft)"/>
+    <path d="M512 614l174-81v152L512 786V614Z" fill="url(#cubeRight)"/>
+    <path d="M338 533l174 81 174-81 34 16-208 98-208-98 34-16Z" fill="#FFFFFF"/>
+    <path d="M512 614l174-81v34l-174 81v-34Z" fill="#74FFFF" opacity="0.74"/>
+    <path d="M512 454v160" stroke="#06265F" stroke-width="9" stroke-linecap="round"/>
+    <path d="M338 533l174 81 174-81" fill="none" stroke="#06265F" stroke-width="9" stroke-linejoin="round"/>
+
+    <g fill="#052E74" opacity="0.92">
+      <path d="M376 596l24 13v111l-24-14V596Z"/>
+      <path d="M430 624l24 13v114l-24-14V624Z"/>
+      <path d="M484 650l24 13v115l-24-14V650Z"/>
+    </g>
+    <g fill="#04366E" opacity="0.86">
+      <path d="M552 660l24-13v113l-24 14V660Z"/>
+      <path d="M610 632l24-12v108l-24 14V632Z"/>
+      <path d="M662 608l24-12v101l-24 14V608Z"/>
+    </g>
+  </g>
+</svg>
