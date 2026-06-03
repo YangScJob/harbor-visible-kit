@@ -199,7 +199,7 @@ git status --short
 
 <a id="english"></a>
 
-<details>
+<details open>
 <summary><strong>English</strong></summary>
 
 ## Overview
